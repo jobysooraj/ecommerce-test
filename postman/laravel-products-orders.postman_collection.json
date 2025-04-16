@@ -1,0 +1,1282 @@
+{
+	"info": {
+		"_postman_id": "b11188d0-1260-4a39-a5f9-2235082f5614",
+		"name": "ecommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "customer-register",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/register?name=joby&email=joby@mailinator.com&password=12345678",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "joby"
+						},
+						{
+							"key": "email",
+							"value": "joby@mailinator.com"
+						},
+						{
+							"key": "password",
+							"value": "12345678"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-product",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "test12",
+							"type": "default"
+						},
+						{
+							"key": "price",
+							"value": "100",
+							"type": "default"
+						},
+						{
+							"key": "stock",
+							"value": "30",
+							"type": "default"
+						},
+						{
+							"key": "description",
+							"value": "test data nnn",
+							"type": "default"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/home/joby/Pictures/images (2).jpeg"
+						},
+						{
+							"key": "is_active",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "slug",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "price",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "stock",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "Fo test data",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "is_active",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6|s6yMdlrKFyODHK8ZcQVCNjGfPZcBOW9Adh1PnE4Wd4673bb2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"order_date\": \"2025-04-16\",\n  \"status\": \"pending\",\n  \"shipping_address\": \"aaa\",\n  \"billing_address\": \"aaa\",\n  \"order_items\": [\n    {\n      \"product_id\": 1,\n      \"quantity\": 1,\n      \"price\": 30\n    },\n    {\n      \"product_id\": 2,\n      \"quantity\": 2,\n      \"price\": 45\n    },\n    {\n      \"product_id\": 3,\n      \"quantity\": 1,\n      \"price\": 60\n    }\n  ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/orders",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"orders"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "slug",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "price",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "stock",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "Fo test data",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "is_active",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order-by-id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6|s6yMdlrKFyODHK8ZcQVCNjGfPZcBOW9Adh1PnE4Wd4673bb2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"order_date\": \"2025-04-16\",\n  \"status\": \"pending\",\n  \"shipping_address\": \"aaa\",\n  \"billing_address\": \"aaa\",\n  \"order_items\": [\n    {\n      \"product_id\": 1,\n      \"quantity\": 1,\n      \"price\": 30\n    },\n    {\n      \"product_id\": 2,\n      \"quantity\": 2,\n      \"price\": 45\n    },\n    {\n      \"product_id\": 3,\n      \"quantity\": 1,\n      \"price\": 60\n    }\n  ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/orders",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"orders"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "slug",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "price",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "stock",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "Fo test data",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "is_active",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list-all-product",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "test12",
+							"type": "default"
+						},
+						{
+							"key": "price",
+							"value": "100",
+							"type": "default"
+						},
+						{
+							"key": "stock",
+							"value": "30",
+							"type": "default"
+						},
+						{
+							"key": "description",
+							"value": "test data nnn",
+							"type": "default"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/home/joby/Pictures/images (2).jpeg"
+						},
+						{
+							"key": "is_active",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "slug",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "price",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "stock",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "Fo test data",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "is_active",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-product",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "test12",
+							"type": "default"
+						},
+						{
+							"key": "price",
+							"value": "100",
+							"type": "default"
+						},
+						{
+							"key": "stock",
+							"value": "30",
+							"type": "default"
+						},
+						{
+							"key": "description",
+							"value": "test data nnn",
+							"type": "default"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/home/joby/Pictures/images (2).jpeg"
+						},
+						{
+							"key": "is_active",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "slug",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "price",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "stock",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "Fo test data",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "is_active",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-orders",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "test12",
+							"type": "default"
+						},
+						{
+							"key": "price",
+							"value": "100",
+							"type": "default"
+						},
+						{
+							"key": "stock",
+							"value": "30",
+							"type": "default"
+						},
+						{
+							"key": "description",
+							"value": "test data nnn",
+							"type": "default"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/home/joby/Pictures/images (2).jpeg"
+						},
+						{
+							"key": "is_active",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "slug",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "price",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "stock",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "Fo test data",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "is_active",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list-customers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6|s6yMdlrKFyODHK8ZcQVCNjGfPZcBOW9Adh1PnE4Wd4673bb2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "test12",
+							"type": "default"
+						},
+						{
+							"key": "price",
+							"value": "100",
+							"type": "default"
+						},
+						{
+							"key": "stock",
+							"value": "30",
+							"type": "default"
+						},
+						{
+							"key": "description",
+							"value": "test data nnn",
+							"type": "default"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/home/joby/Pictures/images (2).jpeg"
+						},
+						{
+							"key": "is_active",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/customers",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"customers"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "slug",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "price",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "stock",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "Fo test data",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "is_active",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list-order-by-customer",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6|s6yMdlrKFyODHK8ZcQVCNjGfPZcBOW9Adh1PnE4Wd4673bb2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "test12",
+							"type": "default"
+						},
+						{
+							"key": "price",
+							"value": "100",
+							"type": "default"
+						},
+						{
+							"key": "stock",
+							"value": "30",
+							"type": "default"
+						},
+						{
+							"key": "description",
+							"value": "test data nnn",
+							"type": "default"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/home/joby/Pictures/images (2).jpeg"
+						},
+						{
+							"key": "is_active",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/customers",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"customers"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "slug",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "price",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "stock",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "Fo test data",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "is_active",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show-product-by-id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "test12",
+							"type": "default"
+						},
+						{
+							"key": "price",
+							"value": "100",
+							"type": "default"
+						},
+						{
+							"key": "stock",
+							"value": "30",
+							"type": "default"
+						},
+						{
+							"key": "description",
+							"value": "test data nnn",
+							"type": "default"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/home/joby/Pictures/images (2).jpeg"
+						},
+						{
+							"key": "is_active",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products",
+						"2"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "slug",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "price",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "stock",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "Fo test data",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "is_active",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-product",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"test13 updated\",\n  \"price\": 90,\n  \"stock\": 60,\n  \"description\": \"Updated product description\",\n  \"is_active\": 1\n \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products",
+						"2"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "test edited",
+							"disabled": true
+						},
+						{
+							"key": "slug",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "price",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "stock",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "Fo test data",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "is_active",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6|s6yMdlrKFyODHK8ZcQVCNjGfPZcBOW9Adh1PnE4Wd4673bb2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"order_date\": \"2025-04-16\",\n  \"status\": \"pending\",\n  \"shipping_address\": \"aaa\",\n  \"billing_address\": \"aaa\",\n  \"order_items\": [\n    {\n      \"product_id\": 1,\n      \"quantity\": 1,\n      \"price\": 30\n    },\n    \n    {\n      \"product_id\": 3,\n      \"quantity\": 1,\n      \"price\": 60\n    }\n  ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/orders/3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"orders",
+						"3"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "slug",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "price",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "stock",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "Fo test data",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "is_active",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customer-login",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login?email=joby@mailinator.com&password=12345678",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "joby@mailinator.com"
+						},
+						{
+							"key": "password",
+							"value": "12345678"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login?email=joby@mailinator.com&password=12345678",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "joby@mailinator.com"
+						},
+						{
+							"key": "password",
+							"value": "12345678"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
